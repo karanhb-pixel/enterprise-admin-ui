@@ -51,6 +51,13 @@ When using Admiral in your project, build your application as usual with your bu
 
 For production deployment, follow standard React deployment practices. For example, with Vercel or Netlify, simply connect your repository and deploy.
 
+### Usage Example
+
+After deploying the application, access the admin UI at:
+http://localhost:3000
+
+Login using valid admin credentials to manage users and settings.
+
 ## Usage Examples
 
 ### Installation
@@ -179,6 +186,16 @@ Admiral exports a wide range of components, hooks, and utilities. Below is an ov
 
 For detailed API documentation, including props and types, refer to the TypeScript definitions in the source code or generated documentation.
 
+## Backend API Reference
+
+The UI communicates with a backend API.
+
+Base URL:
+http://localhost:8080/api
+
+Example endpoint:
+GET /users – Fetch list of users
+
 ## Best Practices
 
 ### Component Usage
@@ -217,6 +234,12 @@ For detailed API documentation, including props and types, refer to the TypeScri
 -   Use optimistic updates for better UX.
 -   Cache data appropriately to reduce unnecessary requests.
 
+### Configuration and Deployment
+
+-   Use environment variables for sensitive configuration
+-   Do not commit `.env` files to version control
+-   Use production-ready build commands for deployment
+
 ## Troubleshooting Guide
 
 ### Common Issues
@@ -241,7 +264,15 @@ For detailed API documentation, including props and types, refer to the TypeScri
     -   **Solution**: Verify your data provider configuration. Check network requests in browser dev tools.
 
 -   **Issue**: Authentication not working
+
     -   **Solution**: Ensure authProvider is correctly implemented and passed to the Admin component.
+
+-   **Issue**: Application not starting
+
+    -   **Solution**: Ensure dependencies are installed. Verify environment variables are set correctly.
+
+-   **Issue**: API connection issues
+    -   **Solution**: Confirm the backend service is running. Check the API base URL configuration.
 
 #### Styling Issues
 
