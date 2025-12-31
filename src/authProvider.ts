@@ -17,7 +17,11 @@ export const storage = {
 const authProvider = (apiUrl: string): AuthProvider => ({
     login: ({ username, password }) => {
         const url = `${apiUrl}/login`
-        return _.post(url)({ data: { username, password } }).then(({ data }) => {
+        return _.post(url)({ data: { username, password } }).then(({ response }) => {
+            const { data } = response
+            if(!data || !data.token){
+                throw new Error('Invalid login response: missing data or token')
+            }
             storage.set(tokenStorageKey, data.token)
         })
     },
